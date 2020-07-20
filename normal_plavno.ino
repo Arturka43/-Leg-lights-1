@@ -48,21 +48,21 @@ void  Scene_01B_fade_down () {
 }
 
 void loop() {
-  boolean button5 = digitalRead(4); // + от габаритов
-  boolean button6 = !digitalRead(6); //левая перед
-  boolean button7 = !digitalRead(7); //правая перед
-  boolean button8 = !digitalRead(12); //правая зад
-  boolean button9 = !digitalRead(9); //левая зад
+  boolean button5 = digitalRead(4); // + from dimensions
+  boolean button6 = !digitalRead(6); //left in front
+  boolean button7 = !digitalRead(7); //right in front
+  boolean button8 = !digitalRead(12); //right in rear
+  boolean button9 = !digitalRead(9); //left in rear
 
-  if (button6 == 1) // если есть условная "1" при открытии двери - зажигаем водительскую сторону белым цветом
+  if (button6 == 1) // if there is a conditional "1" when opening the door - light the driver's side in white
     Scene_01W_fade_up();
   FastLED.show();
 
-  if (button5 == 1 & button6 == 0) //  проверяем 1 на габаритах, если есть, то зажигаем красным при закрытой двери
+  if (button5 == 1 & button6 == 0) // check 1 on the dimensions, if there is, then light it up in red with the door closed
     Scene_01R_fade_up ();
   FastLED.show();
 
-  if (button5 == 0 & button6 == 0)
+  if (button5 == 0 & button6 == 0) // turn off
     Scene_01B_fade_down ();
   FastLED.show();
 }
