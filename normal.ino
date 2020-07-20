@@ -22,27 +22,25 @@ void setup() {
 }
 
 void loop() {
-  boolean button5 = digitalRead(4); // + от габаритов
-  boolean button6 = !digitalRead(6); //левая перед
-  boolean button7 = !digitalRead(7); //правая перед
-  boolean button8 = !digitalRead(12); //правая зад
-  boolean button9 = !digitalRead(9); //левая зад
+  boolean button5 = digitalRead(4); // + from dimensions
+  boolean button6 = !digitalRead(6); //left in front
+  boolean button7 = !digitalRead(7); //right in front
+  boolean button8 = !digitalRead(12); //right in rear
+  boolean button9 = !digitalRead(9); //left in rear
 
-  if (button6 == 1) // если есть условная "1" при открытии двери - зажигаем водительскую сторону белым цветом
+  if (button6 == 1) // if there is a conditional "1" when opening the door - light the driver's side in white
     for (int i = 0; i < NUM_LEDS / 4; i++) {
-      leds[i] = CRGB::White;
-      leds[i].maximizeBrightness(FastLED_fade_counter);  // 'FastLED_fade_counter' How high we want to fade up to 255 = maximum.}
-      FastLED_fade_counter ++ ;   // Increment
+      leds[i] = CHSV (0,0,255);
       FastLED.show();
     }
-  else if (button5 == 1) // иначе  проверяем 1 на габаритах, если есть, то зажигаем красным
+  else if (button5 == 1) // otherwise we check 1 on the dimensions, if there is, then light it up in red
     for (int i = 0; i < NUM_LEDS / 4; i++) {
       leds[i] = CHSV( 0, 100, 100);
       FastLED.show();
       delay(50);
     }
   else
-    for (int i = 0; i < NUM_LEDS / 4; i++) { //если везде по 0 - заливаем чёрным.
+    for (int i = 0; i < NUM_LEDS / 4; i++) { //if 0 is everywhere, fill it with black.
       leds[i] = CHSV( 0, 0, 0);
       FastLED.show();
       delay(50);
