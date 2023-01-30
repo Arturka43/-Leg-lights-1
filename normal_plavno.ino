@@ -16,7 +16,7 @@ void setup() {
   pinMode(10, INPUT); //левая перед
   pinMode(12, INPUT); // + от габаритов
   
-  digitalWrite(10, 0);
+  digitalWrite(2, 0);
 }
 
 void  Scene_01W_fade_up () {
